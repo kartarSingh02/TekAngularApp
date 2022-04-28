@@ -3,6 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { NgxUiLoaderService } from "ngx-ui-loader";
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder , FormGroup, Validators } from '@angular/forms'; 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -15,7 +16,7 @@ export class SignupComponent implements OnInit {
   users:any=[]
   signupForm:any
 
-  constructor(private toastr: ToastrService , private ngxService: NgxUiLoaderService , private http : HttpClient ,private formbuilder:FormBuilder) {
+  constructor(private toastr: ToastrService , private ngxService: NgxUiLoaderService , private http : HttpClient ,private formbuilder:FormBuilder , private router :Router) {
     this.signupForm=this.formbuilder.group({
       formvalid:['',[Validators.required,Validators.email]]
     })
@@ -25,7 +26,8 @@ export class SignupComponent implements OnInit {
   signup(){
 
     if(this.signupForm.valid){
-      alert()
+      alert("Please Verify your Email ")
+      this.router.navigate(["/login"])
     }
     else{
       return
